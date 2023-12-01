@@ -1,5 +1,4 @@
 # Buscaminas
-
 ##Funcionamiento juego
 
 Campo de juego: El juego comienza con un campo de juego rectangular compuesto por casillas. Cada casilla puede contener una mina o estar vacía.
