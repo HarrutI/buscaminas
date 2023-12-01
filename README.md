@@ -30,7 +30,7 @@ Inicia con el metodo crearMapa() dandole por parametro filas, columnas y numero 
 
 Metodo getMapa() te devuelve el array del mapa
 
-- **revelar()** le das la posicion de una casilla y cambia su visibilad y las adyacentes, si una adyacente es un 0, hace recursividad hasta que no quedan casillas con 0 adyancentes entre ellos ademas aumenta noMinas_rev que tiene contador de cuantas casillas han sido reveladas sin ser una mina.
+- **revelar()** le das la posicion de una casilla y cambia su visibilad y las adyacentes, si una adyacente es un 0, hace recursividad hasta que no quedan casillas con 0 adyancentes entre ellos ademas aumenta noMinas_rev que tiene contador de cuantas casillas han sido reveladas sin ser una mina. Si la casilla revelada es un -1, devuelve false, en caso contrario, devuelve true.
 
 - **checkVictoria()** comprueba si has ganado comparando si el contador de casillas reveladas sin ser mina es igual a la cantidad de casillas totales que no contiene una.
 
@@ -68,4 +68,22 @@ El leaderboard esta guardado en un txt, leer_leaderboard() obtiene los datos del
 - **$_REQUEST['la_fila']** contiene la fila de la casilla que pulsaste
 - **$_REQUEST['la_columna']** contiene la columna de la casilla que pulsaste
 
+## INDEX.PHP
 
+Inicia una sesion y comprueba el valor de operacion
+En el switch operacion puede tener varios valores
+- **crear_mapa** obtenido del formulario al iniciar un juego, crea el objeto y valida que el numero de casillas este entre 2 y 900, que el nombre no este vacio y el numero de minas sea menor al numero de casillas. Crea el objeto y lo guarda en $_SESSION['mapa'], guarda los datos en $_SESSION['datos'] e inicia $_SESSION['tInicio']
+
+- **revelar** obtenido al pulsar una de las celdas. Obtiene la fila y columna ademas de la casilla y ejecuta revelar() del objeto Mapa.
+
+Comprueba si pisaste una mina, en caso contrario, comprobamos si has ganado con checkVictoria(). Si devuelve true, creamos $_SESSION['tFinal'] y te envia a leaderboard.php
+
+## LEADERBOARD.PHP
+
+Primero, con el mapa, lo revelo entero y lo imprimo por pantalla para que el usuario vea el resultado final
+
+Despues, si todos los valores de $_SESSION existen, ejecuto leer_leaderboard(), y guardo en 3 variables el nombre, numero de casillas y numero de minas ademas de calcular el tiempo total tardado ($_SESSION['tFinal'] - $_SESSION['tInicio']).
+
+Calculo los puntos obtenidos con los 3 valores y la funcion calcPuntos() y ejecuto add_leaderboard(). Si entras en el top 10 apareceras, en caso contrario no.
+
+Al final muestro el leaderboard completo por pantalla
