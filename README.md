@@ -40,7 +40,7 @@ Metodo getMapa() te devuelve el array del mapa
 
 ### Relacionado con el mapa
 
-**printMapa()** deberas darle un array que será el mapa, lo imprimira entero y dependiendo de la propiedad de Visible del objeto Casilla, mostrará la casilla vacia (blanco con una imagen para la url y obtener mediante GET datos de la casilla pulsada) o la mostrará con un color u otro dependiendo de su valor
+- **printMapa()** deberas darle un array que será el mapa, lo imprimira entero y dependiendo de la propiedad de Visible del objeto Casilla, mostrará la casilla vacia (blanco con una imagen para la url y obtener mediante GET datos de la casilla pulsada) o la mostrará con un color u otro dependiendo de su valor
 
 ### Relacionado con el leaderboard
 
@@ -51,3 +51,21 @@ El leaderboard esta guardado en un txt, leer_leaderboard() obtiene los datos del
 - **printLeaderboard()** Imprime una tabla con los datos del leaderboard entero
 
 - **calcPuntos()** mediante una formula, con el numero de casillas, tiempo y minas
+
+## SESIONES
+
+- **$_SESSION['mapa']** contiene el objeto del mapa completo
+- **$_SESSION['datos']** es un array que contiene 3 valores, en otden son el nombre, numero de casillas y numero de minas en el mapa
+
+- **$_SESSION['tInicio']** contiene un time() con la hora en la que se inicia el juego
+
+- **$_SESSION['tFinal']** contiene un time() con la hora en la que se finaliza el juego
+
+## REQUEST
+
+- **$_REQUEST['operacion']** contiene que tipo de operacion contiene al acceder desde un formulario
+
+- **$_REQUEST['la_fila']** contiene la fila de la casilla que pulsaste
+- **$_REQUEST['la_columna']** contiene la columna de la casilla que pulsaste
+
+
